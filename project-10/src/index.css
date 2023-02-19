@@ -19,6 +19,13 @@
 
 .scroll-bar{
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 1rem;
+}
+
+.scroll-bar div{
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
 }
 /* width */
 .scroll-bar::-webkit-scrollbar {

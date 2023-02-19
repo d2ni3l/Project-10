@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Heading = ({title, type}) => {
+const Heading = ({section, type}) => {
   return (
     <>
      <div className="flex justify-between items-center mx-5">
-        <div className='flex gap-3 items-center'>
-          <h2 className="tracking-wide text-2xl text-gray-300 ">Trending</h2>
-          <button className="text-xs mt-2 flex justify-center items-center lowercase rounded-lg py-[.15rem] px-3 border-gray-300 font-bold border-[1.7px]"><span className='text-gray-300 mt-[-.1rem]'>Movie</span></button>
+        <div className='flex gap-3 items-center justify-center'>
+          <h2 className="tracking-wide text-2xl text-gray-300 ">{section}</h2>
+          <button className={`text-xs mt-1  flex justify-center items-center capitalize rounded-lg py-[.15rem] px-3 border-gray-300 font-bold border-[1.7px] text-gray-300 ${type === 'TV Series' && 'bg-gray-300 text-[#191c23]'} `}><span className=''>{type}</span></button>
         </div>
 
         <div className="mt-3">
@@ -16,5 +16,5 @@ const Heading = ({title, type}) => {
     </>
   )
 }
-
+// bg-gray-300 text-[#10141e]
 export default Heading
