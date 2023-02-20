@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Modal from "./components/Modal";
 import Navbar from "./components/Navbar";
 import Main from "./pages/Main";
 import Movies from "./pages/Movies";
@@ -8,6 +9,7 @@ import Tvseries from "./pages/Tvseries";
 const App = () => {
   return (
     <>
+    
       <Navbar />
       <div className="md:ml-[6.7rem]">
       <Routes>

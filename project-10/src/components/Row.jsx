@@ -9,20 +9,28 @@ const Row = ({ show, section, type }) => {
     return date.slice(0, -6);
   };
 
+  const truncateString = (str, num) => {
+    if (str?.length > num) {
+      return str.slice(0, num) + "...";
+    } else {
+      return str;
+    }
+  };
+
   return (
     <>
       <Heading section={section} type={type} />
       <div className='pt-5'></div>
-      {<Show show={show} handleDate={handleDate} type={type} />}
+      {<Show show={show} handleDate={handleDate} type={type} truncateString={truncateString}/>}
       <div className='pt-7'></div>
-      {<ShowLarger show={show} handleDate={handleDate} type={type} />}
+      {<ShowLarger show={show} handleDate={handleDate} type={type} truncateString={truncateString}/>}
     </>
   );
 };
 
 export default Row;
 
-const Show = ({ show, handleDate, type }) => {
+const Show = ({ show, handleDate, type, truncateString }) => {
   return (
     <>
       <div className='grid grid-cols-2 sm:grid-cols-4 gap-3 mx-5 '>
@@ -53,7 +61,7 @@ const Show = ({ show, handleDate, type }) => {
                 </p>
               </div>
               <p className='text-xs lg:text-md font-semibold   tracking-wide'>
-                {type === "Movie" ? item.title : item.name}
+                {truncateString(type === "Movie" ? item.title : item.name, 25)}
               </p>
             </div>
             <div className='z-30 absolute bg-black/40 rounded-lg w-full h-full top-0'></div>
@@ -64,7 +72,7 @@ const Show = ({ show, handleDate, type }) => {
   );
 };
 
-const ShowLarger = ({ show, handleDate, type }) => {
+const ShowLarger = ({ show, handleDate, type, truncateString }) => {
   return (
     <div className='flex justify-around mx-5 gap-3'>
       {show.slice(-2).map((item, id) => {
@@ -97,7 +105,7 @@ const ShowLarger = ({ show, handleDate, type }) => {
                 </p>
               </div>
               <p className=' text-md lg:text:lg font-semibold tracking-wide'>
-                {type === "Movie" ? item.title : item.name}
+                {truncateString(type === "Movie" ? item.title : item.name, 25)}
               </p>
             </div>
             <div className='z-30 absolute bg-black/50 rounded-lg w-full h-full top-0'></div>
