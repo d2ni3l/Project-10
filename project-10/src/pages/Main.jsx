@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 import Row from "../components/Row";
 import Search from "../components/Search";
+import SearchItems from "../components/SearchItems";
 import Trending from "../components/Trending";
 import requests from "../Request";
 
@@ -19,6 +20,8 @@ const Main = () => {
   const [war, setWar] = useState([]);
   const [itemInfo, setItemInfo] = useState('')
   const [type, setType] = useState('');
+  const [showSearch, setShowSearch] = useState(false)
+
 
   useEffect(() => {
 
@@ -71,7 +74,8 @@ const Main = () => {
   return (
     <>
      {itemInfo === '' ?  null : <Modal  setItemInfo={setItemInfo} item={itemInfo} type={type}/>}
-      <Search />
+      <Search setShowSearch={setShowSearch} showSearch={showSearch}/>
+      {showSearch ? <SearchItems/> : <>
       <div className='pt-10'></div>
       <Trending setItemInfo={setItemInfo} setType={setType} trending={trending} section='Trending' type='Movie' />
       <div className='pt-10'></div>
@@ -92,6 +96,7 @@ const Main = () => {
       <Row setItemInfo={setItemInfo} setType={setType} show={latestTV} section='Latest TV' type='TV Series' />
       <div className='pt-10'></div>
       <Row setItemInfo={setItemInfo} setType={setType} show={war} section='War & Politics' type='Movie' />
+      </>}
       <div className='pt-10'></div>
     </>
   );

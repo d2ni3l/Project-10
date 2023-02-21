@@ -16,7 +16,6 @@ const Modal = ({ setItemInfo, item, type }) => {
       });
   }, []);
 
-  console.log(type);
 
   const handleDate = (date) => {
     return date.slice(0, -6);
@@ -113,7 +112,6 @@ const Modal = ({ setItemInfo, item, type }) => {
                     rating={Math.round(item.vote_average) / 2}
                     interactive={false}></Rater>
                 </div>
-                {console.log(Math.round(item.vote_average))}
               
               </div>
             </div>

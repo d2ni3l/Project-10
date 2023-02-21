@@ -16,11 +16,7 @@ const Heading = ({ section, type }) => {
           </button>
         </div>
 
-        <div className=' sm:mt-3'>
-          <p className=' text-[#5a6a90] uppercase text-sm hover:underline transition duration-300 font-medium cursor-pointer hover:text-gray-300'>
-            see more
-          </p>
-        </div>
+        
       </div>
     </>
   );
