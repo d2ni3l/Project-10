@@ -8,8 +8,7 @@ const requests = {
    requestUpcoming: `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1`,
   requestTopRatedTV: `https://api.themoviedb.org/3/tv/top_rated?api_key=${key}&language=en-US&page=1`,
   requestPopularTV: `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`,
-  requestLatestTV: `
-  https://api.themoviedb.org/3/tv/latest?api_key=${key}&language=en-USpage=2`,
+  requestLatestTV: `https://api.themoviedb.org/3/tv/latest?api_key=${key}&language=en-USpage=2`,
   requestAnimationTv: `https://api.themoviedb.org/3/search/tv?api_key=${key}&language=en-US&query=animation&page=1&include_adult=false`,
   requestWar: `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=war&politics&page=1&include_adult=false`
   

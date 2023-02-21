@@ -18,6 +18,7 @@ const Main = () => {
   const [animationTV, setAnimationTV] = useState([]);
   const [war, setWar] = useState([]);
   const [itemInfo, setItemInfo] = useState('')
+  const [type, setType] = useState('');
 
   useEffect(() => {
 
@@ -63,32 +64,34 @@ const Main = () => {
  
   }, []);
 
-  console.log(itemInfo)
+   // console.log(itemInfo)
+  //  console.log(animationTV)
+  //  console.log(trending)
 
   return (
     <>
-     {itemInfo === '' ?  null : <Modal  setItemInfo={setItemInfo} item={itemInfo}/>}
+     {itemInfo === '' ?  null : <Modal  setItemInfo={setItemInfo} item={itemInfo} type={type}/>}
       <Search />
       <div className='pt-10'></div>
-      <Trending setItemInfo={setItemInfo} trending={trending} section='Trending' type='Movie' />
+      <Trending setItemInfo={setItemInfo} setType={setType} trending={trending} section='Trending' type='Movie' />
       <div className='pt-10'></div>
-      <Row show={topRatedTV} section='Top Rated' type='TV Series' />
+      <Row setItemInfo={setItemInfo} setType={setType}  show={topRatedTV} section='Top Rated' type='TV Series' />
       <div className='pt-10'></div>
       <Row show={popular} section='Popular' type='Movie' />
       <div className='pt-10'></div>
-      <Trending trending={trendingTV} section='Trending' type='TV Series' />
+      <Trending setItemInfo={setItemInfo} setType={setType} trending={trendingTV} section='Trending' type='TV Series' />
       <div className='pt-10'></div>
-      <Row show={topRated} section='Top Rated' type='Movie' />
+      <Row setItemInfo={setItemInfo} setType={setType} show={topRated} section='Top Rated' type='Movie' />
       <div className='pt-10'></div>
-      <Row show={animationTV} section='Animation' type='TV Series' />
+      <Row setItemInfo={setItemInfo} setType={setType} show={animationTV} section='Animation' type='TV Series' />
       <div className='pt-10'></div>
-      <Trending trending={upcoming} section='Upcoming' type='Movie' />
+      <Trending setItemInfo={setItemInfo} setType={setType} trending={upcoming} section='Upcoming' type='Movie' />
       <div className='pt-10'></div>
-      <Row show={horrorTV} section='Horror' type='TV Series' />
+      <Row setItemInfo={setItemInfo} setType={setType} show={horrorTV} section='Horror' type='TV Series' />
       <div className='pt-10'></div>
-      <Row show={latestTV} section='Latest TV' type='TV Series' />
+      <Row setItemInfo={setItemInfo} setType={setType} show={latestTV} section='Latest TV' type='TV Series' />
       <div className='pt-10'></div>
-      <Row show={war} section='War & Politics' type='Movie' />
+      <Row setItemInfo={setItemInfo} setType={setType} show={war} section='War & Politics' type='Movie' />
       <div className='pt-10'></div>
     </>
   );

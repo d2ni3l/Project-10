@@ -1,10 +1,11 @@
 import React from "react";
+import { useEffect } from "react";
 import { RxDotFilled } from "react-icons/rx";
 import { TbMovie } from "react-icons/tb";
 
 import Heading from "./Heading";
 
-const Row = ({ show, section, type }) => {
+const Row = ({ show, section, type, setItemInfo, setType }) => {
   const handleDate = (date) => {
     return date.slice(0, -6);
   };
@@ -21,24 +22,52 @@ const Row = ({ show, section, type }) => {
     <>
       <Heading section={section} type={type} />
       <div className='pt-5'></div>
-      {<Show show={show} handleDate={handleDate} type={type} truncateString={truncateString}/>}
+      {
+        <Show
+          show={show}
+          handleDate={handleDate}
+          type={type}
+          truncateString={truncateString}
+          setItemInfo={setItemInfo}
+          setType={setType}
+        />
+      }
       <div className='pt-7'></div>
-      {<ShowLarger show={show} handleDate={handleDate} type={type} truncateString={truncateString}/>}
+      {
+        <ShowLarger
+          show={show}
+          handleDate={handleDate}
+          type={type}
+          truncateString={truncateString}
+          setItemInfo={setItemInfo}
+          setType={setType}
+        />
+      }
     </>
   );
 };
 
 export default Row;
 
-const Show = ({ show, handleDate, type, truncateString }) => {
+const Show = ({ show, handleDate, type, truncateString, setItemInfo, setType }) => {
   return (
     <>
       <div className='grid grid-cols-2 sm:grid-cols-4 gap-3 mx-5 '>
         {show.slice(0, 4).map((item, id) => (
-          <div key={id} className='w-full h-full relative'>
+          <div
+            onClick={() => {
+              setItemInfo(item);
+              setType(type);
+            }}
+            key={id}
+            className='w-full h-full relative cursor-pointer hover-scale'>
             <img
               className='rounded-lg w-full h-full'
-              src={item.backdrop_path === null ? 'https://via.placeholder.com/150x90/7b75f5/FFFFFF?text=Image_not_available' : `https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+              src={
+                item.backdrop_path === null
+                  ? "https://via.placeholder.com/150x90/7b75f5/FFFFFF?text=Image_not_available"
+                  : `https://image.tmdb.org/t/p/original/${item.backdrop_path}`
+              }
               alt={type === "Movie" ? item.title : item.name}
             />
 
@@ -72,17 +101,32 @@ const Show = ({ show, handleDate, type, truncateString }) => {
   );
 };
 
-const ShowLarger = ({ show, handleDate, type, truncateString }) => {
+const ShowLarger = ({
+  show,
+  handleDate,
+  type,
+  truncateString,
+  setItemInfo,
+  setType
+}) => {
   return (
     <div className='flex justify-around mx-5 gap-3'>
       {show.slice(-2).map((item, id) => {
         return (
           <div
+          onClick={() => {
+            setItemInfo(item);
+            setType(type);
+          }}
             key={id}
-            className='w-full h-full relative lg:h-[350px] lg:w-[600px]'>
+            className='w-full h-full relative lg:h-[350px] cursor-pointer lg:w-[600px] hover-scale'>
             <img
               className='rounded-lg w-full h-full '
-              src={item.backdrop_path === null ? 'https://via.placeholder.com/150x90/7b75f5/FFFFFF?text=Image_not_available' : `https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+              src={
+                item.backdrop_path === null
+                  ? "https://via.placeholder.com/150x90/7b75f5/FFFFFF?text=Image_not_available"
+                  : `https://image.tmdb.org/t/p/original/${item.backdrop_path}`
+              }
               alt={type === "Movie" ? item.title : item.name}
             />
 

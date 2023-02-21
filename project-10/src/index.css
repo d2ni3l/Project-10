@@ -1,12 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-  font-family: 'Poppins', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -17,43 +16,65 @@
   scroll-behavior: smooth;
 }
 
-.scroll-bar{
+.scroll-bar {
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scroll-padding-left: 1rem;
 }
 
-.scroll-bar div{
+.scroll-bar div {
   scroll-snap-align: center;
   scroll-snap-stop: always;
 }
 /* width */
 .scroll-bar::-webkit-scrollbar {
-  height:10px;
+  height: 10px;
 }
 
 /* Track */
 .scroll-bar::-webkit-scrollbar-track {
- 
   background: rgba(128, 128, 128, 0.24);
   border-radius: 10px;
 }
- 
+
 /* Handle */
 .scroll-bar::-webkit-scrollbar-thumb {
-  background: #5a698f; 
+  background: #5a698f;
   border-radius: 7px;
-
-  
 }
 
 /* Handle on hover */
 .scroll-bar::-webkit-scrollbar-thumb:hover {
-  
-  background: #3f475c; 
-
+  background: #3f475c;
 }
 
+.react-rater-star.is-active {
+  color: yellow !important;
+}
+
+.react-rater-star {
+  color: black;
+}
 
 /* 7b75f5  5a6a90*/
 
+.rate {
+  rotate: 180deg;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+
+  background: #7b75f5;
+}
+
+::selection {
+  background: #7b75f5;
+}
+.hover-scale{
+  transition: all ease 300ms;
+}
+
+.hover-scale:hover{
+  scale: .95;
+}

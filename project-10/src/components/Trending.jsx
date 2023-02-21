@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Heading from "./Heading";
 
 import { RxDotFilled } from "react-icons/rx";
 import { TbMovie } from "react-icons/tb";
 
-const Trending = ({ trending, type, section, setItemInfo }) => {
-  
+const Trending = ({ trending, type, section, setItemInfo, setType }) => {
 
   const handleDate = (date) => {
     return date.slice(0, -6);
   };
+  
 
   const truncateString = (str, num) => {
     if (str?.length > num) {
@@ -18,22 +18,23 @@ const Trending = ({ trending, type, section, setItemInfo }) => {
       return str;
     }
   };
-
-  
-
   return (
     <div>
       <Heading section={section} type={type} />
       <div className='pt-5'></div>
-      <div className='flex gap-5 pb-2 shrink-0 overflow-x-scroll scroll-smooth scroll-bar items-start w-screen pr-32'>
+      <div
+        
+        className='flex hover-scale gap-5   pb-2 shrink-0 overflow-x-scroll scroll-smooth scroll-bar items-start w-screen pr-12 mx-5 md:mx-0'>
         {trending.slice(0, 10).map((item, id) => {
           return (
             <div
               onClick={() => {
                 setItemInfo(item);
+                setType(type);
               }}
+              
               key={id}
-              className='min-w-[420px] min-h-[220px] relative'>
+              className='min-w-[420px] min-h-[220px] relative cursor-pointer'>
               <img
                 className='rounded-lg z-10 w-full h-full max-h-[236px]'
                 src={
