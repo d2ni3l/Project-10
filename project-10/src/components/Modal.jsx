@@ -32,8 +32,8 @@ const Modal = ({ setItemInfo, item, type }) => {
 
   return (
     <>
-      <div className='fixed z-50  w-screen h-screen -mt-[7.5rem] md:-mt-10 overflow-x-hidden overflow-y-scroll flex justify-center md:ml-[-6.7rem] items-center bg-[#0000006e]  backdrop-blur-sm'>
-        <div className=' relative px-10 py-5 max-w-3xl scale-[0.8] sm:scale-[0.9] md:scale-[1] h-auto bg-[#10141e] shadow-lg  border-white rounded'>
+      <div className='fixed z-50  w-[110vw] h-[110vh] md:h-[130vh] md:w-[120vw] -mt-[7.5rem]  overflow-x-hidden overflow-y-scroll flex justify-center md:ml-[-6.7rem] items-center bg-[#0000006e]  backdrop-blur-sm'>
+        <div className=' relative px-10 py-5 max-w-3xl scale-[0.7] sm:scale-[0.9] lg:scale-[1]  h-auto bg-[#10141e] shadow-lg  border-white rounded-lg'>
           <div className='flex justify-end mx-0 mt-5'>
             <span className='text-yellow-300 '></span>
             <button

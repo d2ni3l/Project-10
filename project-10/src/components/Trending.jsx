@@ -18,13 +18,14 @@ const Trending = ({ trending, type, section, setItemInfo, setType }) => {
       return str;
     }
   };
+  // min-w-[420px] min-h-[220px]
   return (
     <div>
       <Heading section={section} type={type} />
       <div className='pt-5'></div>
       <div
         
-        className='flex hover-scale gap-5   pb-2 shrink-0 overflow-x-scroll scroll-smooth scroll-bar items-start w-screen pr-12 mx-5 md:mx-0'>
+        className='flex  gap-5   pb-2 shrink-0 overflow-x-scroll scroll-smooth scroll-bar items-start w-screen pr-12 mx-5 md:mx-0'>
         {trending.slice(0, 10).map((item, id) => {
           return (
             <div
@@ -34,7 +35,7 @@ const Trending = ({ trending, type, section, setItemInfo, setType }) => {
               }}
               
               key={id}
-              className='min-w-[420px] min-h-[220px] relative cursor-pointer'>
+              className='min-w-[305px] min-h-[170px] sm:min-w-[420px] sm:min-h-[220px] relative cursor-pointer hover-scale'>
               <img
                 className='rounded-lg z-10 w-full h-full max-h-[236px]'
                 src={

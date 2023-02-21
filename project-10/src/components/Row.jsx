@@ -130,25 +130,25 @@ const ShowLarger = ({
               alt={type === "Movie" ? item.title : item.name}
             />
 
-            <div className='absolute  bottom-5 w-full z-40 mx-4'>
+            <div className='absolute  bottom-1 sm:bottom-5 w-full z-40 mx-2 sm:mx-5'>
               <div className='flex items-center '>
-                <p className=' text-md lg:text-lg'>
+                <p className=' text-xs sm:text-lg '>
                   {handleDate(
                     type === "Movie" ? item.release_date : item.first_air_date
                   )}
                 </p>
-                <span className=' text-md lg:text-lg'>
+                <span className=' text-xs sm:text-lg '>
                   <RxDotFilled />
                 </span>
-                <span className=' text-lg lg:text-xl text-gray-300'>
+                <span className=' text-xs sm:text-lg lg:text-xl text-gray-300'>
                   <TbMovie />
                 </span>
                 &nbsp;
-                <p className=' text-md text-lg'>
+                <p className=' text-xs sm:text-lg '>
                   {type === "Movie" ? "Movie" : "Tv Series"}
                 </p>
               </div>
-              <p className=' text-md lg:text:lg font-semibold tracking-wide'>
+              <p className='text-xs sm:text-lg font-semibold tracking-wide'>
                 {truncateString(type === "Movie" ? item.title : item.name, 25)}
               </p>
             </div>
