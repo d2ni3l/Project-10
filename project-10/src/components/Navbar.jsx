@@ -20,7 +20,7 @@ const Navbar = () => {
   //   }
   return (
     <>
-      <div className='bg-[#171e31] py-6 flex justify-around items-center text-[#5a6a90] text-2xl md:fixed md:flex-col md:h-[90vh] md:ml-3 md:px-6 md:rounded-lg'>
+      <div className='bg-[#171e31] py-6 flex justify-around items-center  text-[#5a6a90] text-2xl md:fixed md:flex-col md:h-[90vh] md:ml-3 md:mt-20 md:px-6 md:rounded-lg'>
         <span className={`text-3xl text-[#7b75f5]  cursor-pointer `}>
           <Link to='/' >
           <BiCameraMovie/>
@@ -47,9 +47,11 @@ const Navbar = () => {
           </span>
 
           </div>
+          <Link to='/account'>
           <span className="text-3xl text-white cursor-pointer hover:text-[#7b75f5] hover:scale-95 transition-all duration-300">
             <BsFillPersonFill/>
           </span>
+          </Link>
       </div>
     </>
   );

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { AiOutlineClose } from "react-icons/ai";
+import {BsFillBookmarkFill} from 'react-icons/bs'
+import {BsBookmark} from 'react-icons/bs'
 import Rater from "react-rater";
 import "react-rater/lib/react-rater.css";
 const key = "a44069ccf4250949a19d7bae7fa72fce";
 const Modal = ({ setItemInfo, item, type }) => {
   const [movieItem, setMovieItem] = useState([]);
+  const [saved, setSaved] = useState(true)
   useEffect(() => {
     axios
       .get(
@@ -48,12 +51,21 @@ const Modal = ({ setItemInfo, item, type }) => {
       return item.title
     }
   }
+  const sliceType =  (type) => {
+    return type.slice(0, 10);
+  }
   return (
     <>
       <div className='fixed z-50  w-[110vw] h-[110vh] md:h-[130vh] md:w-[120vw] -mt-[7.5rem]  overflow-x-hidden overflow-y-scroll flex justify-center md:ml-[-6.7rem] items-center bg-[#0000006e]  backdrop-blur-sm'>
-        <div className=' relative px-10 py-5 max-w-3xl scale-[0.7] sm:scale-[0.9] lg:scale-[1]  h-auto bg-[#10141e] shadow-lg  border-white rounded-lg'>
-          <div className='flex justify-end mx-0 mt-5'>
-            <span className='text-yellow-300 '></span>
+        <div className=' relative px-10 py-5 max-w-3xl scale-[0.7] sm:scale-[0.9] lg:scale-[1]  h-auto bg-[#10141e] shadow-lg  border rounded-lg'>
+
+          <div className='flex justify-between mx-0 mt-5'>
+            <button
+            onClick={() => {setSaved(!saved)}}
+            className='text-xl '>
+              {saved ? <span className="text-yellow-400"><BsFillBookmarkFill/></span> : <BsBookmark/>}
+            </button>
+
             <button
               onClick={() => {
                 setItemInfo("");
@@ -62,6 +74,7 @@ const Modal = ({ setItemInfo, item, type }) => {
               <AiOutlineClose />
             </button>
           </div>
+
           <div className='flex justify-center mt-10 gap-10'>
             <div className=''>
               <img
@@ -101,7 +114,7 @@ const Modal = ({ setItemInfo, item, type }) => {
             </div>
             <div className='flex flex-col text-sm bg-[#5a6a90] gap-1 justify-center px-3 py-7 rounded-lg'>
               <p className='tracking-wide'>
-                Media: <span className='font-bold'>{type}</span>
+                Media: <span className='font-bold'>{sliceType(type)}</span>
               </p>
               <div className='border-b-[2px] border-[#ffffff4e] rounded-2xl'></div>
 

@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Main from "./pages/Main";
 import Movies from "./pages/Movies";
 import Tvseries from "./pages/Tvseries";
+import Account from "./pages/Account";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path={"/"} element={<Main />} />
         <Route path={"/tvseries"} element={<Tvseries />} />
         <Route path={"/movies"} element={<Movies />} />
+        <Route path={'/account'} element={<Account/>} />
       </Routes>
       </div>
     </>
