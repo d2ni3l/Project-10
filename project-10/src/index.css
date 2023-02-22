@@ -77,4 +77,5 @@
 
 .hover-scale:hover{
   scale: .95;
+  border: solid 1px #ffff;
 }

@@ -60,18 +60,18 @@ const Show = ({ show, handleDate, type, truncateString, setItemInfo, setType }) 
               setType(type);
             }}
             key={id}
-            className='w-full h-full relative cursor-pointer hover-scale'>
+            className='w-full h-full relative cursor-pointer hover-scale rounded-lg'>
             <img
               className='rounded-lg w-full h-full'
               src={
                 item.backdrop_path === null
-                  ? "https://via.placeholder.com/150x90/7b75f5/FFFFFF?text=Image_not_available"
+                  ? "https://via.placeholder.com/150x90/10141e/FFFFFF?text=Image_not_available"
                   : `https://image.tmdb.org/t/p/original/${item.backdrop_path}`
               }
               alt={type === "Movie" ? item.title : item.name}
             />
 
-            <div className='absolute bottom-1 lg:bottom-5 w-full z-40 mx-2'>
+            <div className='absolute bottom-1 lg:bottom-5 w-full z-40 mx-2 pr-3'>
               <div className='flex items-center '>
                 <p className='text-xs lg:text-md'>
                   {handleDate(
@@ -119,18 +119,18 @@ const ShowLarger = ({
             setType(type);
           }}
             key={id}
-            className='w-full h-full relative lg:h-[350px] cursor-pointer lg:w-[600px] hover-scale'>
+            className='w-full h-full relative lg:h-[350px] cursor-pointer lg:w-[600px] hover-scale rounded-lg'>
             <img
               className='rounded-lg w-full h-full '
               src={
                 item.backdrop_path === null
-                  ? "https://via.placeholder.com/150x90/7b75f5/FFFFFF?text=Image_not_available"
+                  ? "https://via.placeholder.com/150x90/10141e/FFFFFF?text=Image_not_available"
                   : `https://image.tmdb.org/t/p/original/${item.backdrop_path}`
               }
               alt={type === "Movie" ? item.title : item.name}
             />
 
-            <div className='absolute  bottom-1 sm:bottom-5 w-full z-40 mx-2 sm:mx-5'>
+            <div className='absolute  bottom-1 sm:bottom-5 w-full z-40 mx-2 sm:mx-5 pr-3'>
               <div className='flex items-center '>
                 <p className=' text-xs sm:text-lg '>
                   {handleDate(

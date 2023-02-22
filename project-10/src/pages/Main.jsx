@@ -21,6 +21,7 @@ const Main = () => {
   const [itemInfo, setItemInfo] = useState('')
   const [type, setType] = useState('');
   const [showSearch, setShowSearch] = useState(false)
+  const [search, setSearch] = useState('');
 
 
   useEffect(() => {
@@ -67,21 +68,19 @@ const Main = () => {
  
   }, []);
 
-   // console.log(itemInfo)
-  //  console.log(animationTV)
-  //  console.log(trending)
 
+console.log(type)
   return (
     <>
      {itemInfo === '' ?  null : <Modal  setItemInfo={setItemInfo} item={itemInfo} type={type}/>}
-      <Search setShowSearch={setShowSearch} showSearch={showSearch}/>
-      {showSearch ? <SearchItems/> : <>
+      <Search setShowSearch={setShowSearch} showSearch={showSearch} setSearch={setSearch}/>
+      {showSearch ? <SearchItems search={search} setItemInfo={setItemInfo} setType={setType}/> : <>
       <div className='pt-10'></div>
       <Trending setItemInfo={setItemInfo} setType={setType} trending={trending} section='Trending' type='Movie' />
       <div className='pt-10'></div>
       <Row setItemInfo={setItemInfo} setType={setType}  show={topRatedTV} section='Top Rated' type='TV Series' />
       <div className='pt-10'></div>
-      <Row show={popular} section='Popular' type='Movie' />
+      <Row show={popular} setItemInfo={setItemInfo} setType={setType} section='Popular' type='Movie' />
       <div className='pt-10'></div>
       <Trending setItemInfo={setItemInfo} setType={setType} trending={trendingTV} section='Trending' type='TV Series' />
       <div className='pt-10'></div>

@@ -19,6 +19,8 @@ const Trending = ({ trending, type, section, setItemInfo, setType }) => {
     }
   };
   // min-w-[420px] min-h-[220px]
+
+  
   return (
     <div>
       <Heading section={section} type={type} />
@@ -35,12 +37,12 @@ const Trending = ({ trending, type, section, setItemInfo, setType }) => {
               }}
               
               key={id}
-              className='min-w-[305px] min-h-[170px] sm:min-w-[420px] sm:min-h-[220px] relative cursor-pointer hover-scale'>
+              className='min-w-[305px] min-h-[170px] sm:min-w-[420px] sm:min-h-[220px] relative cursor-pointer hover-scale rounded-lg'>
               <img
                 className='rounded-lg z-10 w-full h-full max-h-[236px]'
                 src={
                   item.backdrop_path === null
-                    ? "https://via.placeholder.com/150x90/7b75f5/FFFFFF?text=Image_not_available"
+                    ? "https://via.placeholder.com/150x90/10141e/FFFFFF?text=Image_not_available"
                     : `https://image.tmdb.org/t/p/original/${item.backdrop_path}`
                 }
                 alt={type === "Movie" ? item.title : item.name}

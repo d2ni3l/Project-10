@@ -16,7 +16,6 @@ const Modal = ({ setItemInfo, item, type }) => {
       });
   }, []);
 
-
   const handleDate = (date) => {
     return date.slice(0, -6);
   };
@@ -29,6 +28,26 @@ const Modal = ({ setItemInfo, item, type }) => {
     }
   };
 
+
+  const handleTypeDate = (type) => {
+    if (type === "Movie"){
+  return item.release_date
+    }else if(type === 'TV Series'){
+      return item.first_air_date
+    }else{
+      return item.release_date
+    }
+  }
+
+  const handleTypeTitle = (type) => {
+    if (type === "Movie"){
+  return item.title
+    }else if(type === 'TV Series'){
+      return item.name
+    }else{
+      return item.title
+    }
+  }
   return (
     <>
       <div className='fixed z-50  w-[110vw] h-[110vh] md:h-[130vh] md:w-[120vw] -mt-[7.5rem]  overflow-x-hidden overflow-y-scroll flex justify-center md:ml-[-6.7rem] items-center bg-[#0000006e]  backdrop-blur-sm'>
@@ -57,7 +76,7 @@ const Modal = ({ setItemInfo, item, type }) => {
             </div>
             <div className='flex flex-col gap-5'>
               <h2 className='text-4xl max-w-[12rem] font-semibold '>
-                {type === "Movie" ? item.title : item.name}
+                {truncateString(handleTypeTitle(type))}
               </h2>
               <p className='max-w-[12rem]'>
                 {truncateString(item.overview, 150)}
@@ -68,54 +87,45 @@ const Modal = ({ setItemInfo, item, type }) => {
           <h3 className='font-medium text-lg mt-4 mb-1'>
             {item.cast === null ? "" : "Casts"}
           </h3>
-          <div className='flex justify-between'>
+          <div className='flex justify-between gap-1'>
             <div className=' w-[20rem] flex flex-wrap   gap-1'>
               {movieItem.slice(0, 10).map((item, id) => {
                 return (
                   <div key={id}>
-                    <button
-                      
-                      className='py-1 px-2 font-medium tracking-wide cursor-text text-xs rounded-lg border border-gray-300'>
+                    <button className='py-1 px-2 font-medium tracking-wide cursor-text text-xs rounded-lg border border-gray-300'>
                       {item.name}
                     </button>
                   </div>
                 );
               })}
-              <div></div>
             </div>
             <div className='flex flex-col text-sm bg-[#5a6a90] gap-1 justify-center px-3 py-7 rounded-lg'>
               <p className='tracking-wide'>
                 Media: <span className='font-bold'>{type}</span>
               </p>
-              <div className="border-b-[2px] border-[#ffffff4e] rounded-2xl"></div>
+              <div className='border-b-[2px] border-[#ffffff4e] rounded-2xl'></div>
 
               <p className='tracking-wide'>
                 Release date:{" "}
                 <span className='font-bold'>
-                  {" "}
-                  {handleDate(
-                    type === "Movie" ? item.release_date : item.first_air_date
-                  )}
+                {handleDate(
+                      handleTypeDate(type)
+                    )}
                 </span>
               </p>
-              <div className="border-b-[2px] border-[#ffffff4e] rounded-2xl"></div>
+              <div className='border-b-[2px] border-[#ffffff4e] rounded-2xl'></div>
 
-              <div className="flex">
-              <p className='tracking-wide'>
-                Rating:{" "}
-                </p>
-                 &nbsp;
+              <div className='flex'>
+                <p className='tracking-wide'>Rating: </p>
+                &nbsp;
                 <div className='text-lg -mt-[0.28rem]'>
                   <Rater
-                  
                     total={5}
                     rating={Math.round(item.vote_average) / 2}
                     interactive={false}></Rater>
                 </div>
-              
               </div>
             </div>
-
           </div>
         </div>
       </div>
