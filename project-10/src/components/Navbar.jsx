@@ -1,13 +1,15 @@
 import React, {useState} from "react";
-import {BsFillPersonFill} from 'react-icons/bs'
+import {BsFillPersonFill, BsFillBookmarkFill} from 'react-icons/bs'
 import { AiFillAppstore } from "react-icons/ai";
 import { TbMovie } from "react-icons/tb";
 import { BiMoviePlay } from "react-icons/bi";
 import { BiCameraMovie } from "react-icons/bi";
 import {Link} from 'react-router-dom'
+import {UserAuth} from '../context/AuthContext'
 
 const Navbar = () => {
   const [changeColor, setChangeColor] = useState('/')
+  const {user} = UserAuth();
 
   // const handleColor = () => {
   //   if(changeColor === '/'){
@@ -47,11 +49,15 @@ const Navbar = () => {
           </span>
 
           </div>
-          <Link to='/account'>
+          {user === null ?  <Link to='/account'>
           <span className="text-3xl text-white cursor-pointer hover:text-[#7b75f5] hover:scale-95 transition-all duration-300">
-            <BsFillPersonFill/>
+            <BsFillPersonFill/> 
           </span>
-          </Link>
+          </Link> : <Link to='/saved'>
+          <span className="text-xl hover:text-white cursor-pointer text-[#7b75f5] hover:scale-95 transition-all duration-300">
+            <BsFillBookmarkFill/>
+          </span>
+          </Link> }
       </div>
     </>
   );

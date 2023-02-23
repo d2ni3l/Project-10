@@ -6,6 +6,8 @@ import Main from "./pages/Main";
 import Movies from "./pages/Movies";
 import Tvseries from "./pages/Tvseries";
 import Account from "./pages/Account";
+import Saved from './pages/Saved'
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (
@@ -18,6 +20,7 @@ const App = () => {
         <Route path={"/tvseries"} element={<Tvseries />} />
         <Route path={"/movies"} element={<Movies />} />
         <Route path={'/account'} element={<Account/>} />
+        <Route path={'/saved'} element={<ProtectedRoute><Saved/></ProtectedRoute>} />
       </Routes>
       </div>
     </>
