@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
-import { UserAuth } from '../context/AuthContext'
-import {useNavigate} from 'react-router-dom'
+import React, {useState} from 'react';
+import { UserAuth } from '../context/AuthContext';
+import {useNavigate} from 'react-router-dom';
 
 const Saved = () => {
     const {user, logOut} = UserAuth();
@@ -15,7 +15,6 @@ const Saved = () => {
             console.log(err)
         }
     };
-    console.log(user)
   return (
     <>
       <button onClick={handleLogOut} className='bg-red-500 p-2'>log out</button>

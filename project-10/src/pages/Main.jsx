@@ -69,7 +69,6 @@ const Main = () => {
   }, []);
 
 
-console.log(type)
   return (
     <>
      {itemInfo === '' ?  null : <Modal  setItemInfo={setItemInfo} item={itemInfo} type={type}/>}

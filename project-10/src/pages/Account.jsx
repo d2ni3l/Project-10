@@ -7,13 +7,12 @@ const Account = () => {
   const [logged, setLogged] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user, signUp } = UserAuth();
+  const { user, signUp, logIn } = UserAuth();
 
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    console.log("i work");
     try {
       {
         await signUp(email, password);
@@ -26,10 +25,9 @@ const Account = () => {
 
   const handleLogIn = async (e) => {
     e.preventDefault();
-    console.log("i work");
     try {
       {
-        await signUp(email, password);
+        await logIn(email, password);
         navigate("/saved");
       }
     } catch (err) {
@@ -44,7 +42,7 @@ const Account = () => {
         <LogInForm
           setEmail={setEmail}
           setPassword={setPassword}
-          handleSignUp={handleSignUp}
+          handleLogIn={handleLogIn}
           setLogged={setLogged}
         />
       ) : (
@@ -111,14 +109,14 @@ const SignInForm = ({ setEmail, setPassword, handleSignUp, setLogged }) => {
   );
 };
 
-const LogInForm = ({ setEmail, setPassword, setLogged }) => {
+const LogInForm = ({ setEmail, setPassword, setLogged, handleLogIn }) => {
   return (
     <>
       <div className='grid items-center justify-center mx-auto h-auto max-w-md border border-[#7b75f5] py-12 rounded'>
         <h2 className='pb-6 font-bold text-3xl '>Log In</h2>
         <div className='pt-2'></div>
         <form
-          // onSubmit={handleSubmit}
+           onSubmit={handleLogIn}
           className='flex flex-col gap-5'>
           <div className='flex flex-col gap-2'>
             <input

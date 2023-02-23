@@ -10,6 +10,7 @@ import {UserAuth} from '../context/AuthContext'
 const Navbar = () => {
   const [changeColor, setChangeColor] = useState('/')
   const {user} = UserAuth();
+  console.log(user)
 
   // const handleColor = () => {
   //   if(changeColor === '/'){
