@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { AiOutlineClose } from "react-icons/ai";
-import {BsFillBookmarkFill} from 'react-icons/bs'
-import {BsBookmark} from 'react-icons/bs'
+import { BsFillBookmarkFill } from "react-icons/bs";
+import { BsBookmark } from "react-icons/bs";
 import Rater from "react-rater";
 import "react-rater/lib/react-rater.css";
+import { UserAuth } from "../context/AuthContext";
+import { db } from "../firebase";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+
 const key = "a44069ccf4250949a19d7bae7fa72fce";
 const Modal = ({ setItemInfo, item, type }) => {
   const [movieItem, setMovieItem] = useState([]);
-  const [saved, setSaved] = useState(true)
+  const [saved, setSaved] = useState(false);
+  const [modal, setModal] = useState(false);
+  const { user } = UserAuth();
+  // const [saved, setSaved] = useState()
   useEffect(() => {
     axios
       .get(
@@ -17,6 +24,7 @@ const Modal = ({ setItemInfo, item, type }) => {
       .then((res) => {
         setMovieItem(res.data.cast);
       });
+    setModal(true);
   }, []);
 
   const handleDate = (date) => {
@@ -31,39 +39,61 @@ const Modal = ({ setItemInfo, item, type }) => {
     }
   };
 
-
   const handleTypeDate = (type) => {
-    if (type === "Movie"){
-  return item.release_date
-    }else if(type === 'TV Series'){
-      return item.first_air_date
-    }else{
-      return item.release_date
+    if (type === "Movie") {
+      return item.release_date;
+    } else if (type === "TV Series") {
+      return item.first_air_date;
+    } else {
+      return item.release_date;
     }
-  }
+  };
 
   const handleTypeTitle = (type) => {
-    if (type === "Movie"){
-  return item.title
-    }else if(type === 'TV Series'){
-      return item.name
-    }else{
-      return item.title
+    if (type === "Movie") {
+      return item.title;
+    } else if (type === "TV Series") {
+      return item.name;
+    } else {
+      return item.title;
     }
-  }
-  const sliceType =  (type) => {
+  };
+  const sliceType = (type) => {
     return type.slice(0, 10);
-  }
+  };
+
+  const movieID = doc(db, "users", `${user?.email}`);
+
+  const saveShow = async () => {
+    console.log(item);
+    const title = item.title || item.name;
+    if (user && modal) {
+      setSaved(!saved);
+      await updateDoc(movieID, {
+        savedShows: arrayUnion({
+          id: item.id,
+          title: title,
+          img: item.backdrop_path,
+        }),
+      });
+    } else {
+      alert("You are not logged in !");
+    }
+  };
+
   return (
     <>
       <div className='fixed z-50  w-[110vw] h-[110vh] md:h-[130vh] md:w-[120vw] -mt-[7.5rem]  overflow-x-hidden overflow-y-scroll flex justify-center md:ml-[-6.7rem] items-center bg-[#0000006e]  backdrop-blur-sm'>
-        <div className=' relative px-10 py-5 max-w-3xl scale-[0.7] sm:scale-[0.9] lg:scale-[1]  h-auto bg-[#10141e] shadow-lg  border rounded-lg'>
-
+        <div className=' relative mr-10 md:mr-20 lg:mr-40 px-10 py-5 max-w-3xl scale-[0.7] sm:scale-[0.9] lg:scale-[1]  h-auto bg-[#10141e] shadow-lg  border rounded-lg'>
           <div className='flex justify-between mx-0 mt-5'>
-            <button
-            onClick={() => {setSaved(!saved)}}
-            className='text-xl '>
-              {saved ? <span className="text-yellow-400"><BsFillBookmarkFill/></span> : <BsBookmark/>}
+            <button onClick={saveShow} className='text-xl '>
+              {saved ? (
+                <span className='text-yellow-400'>
+                  <BsFillBookmarkFill />
+                </span>
+              ) : (
+                <BsBookmark />
+              )}
             </button>
 
             <button
@@ -84,8 +114,7 @@ const Modal = ({ setItemInfo, item, type }) => {
                     ? "https://via.placeholder.com/150x90/7b75f5/FFFFFF?text=Image_not_available"
                     : `https://image.tmdb.org/t/p/original/${item.poster_path}`
                 }
-                alt=''
-              />
+                alt='' />
             </div>
             <div className='flex flex-col gap-5'>
               <h2 className='text-4xl max-w-[12rem] font-semibold '>
@@ -121,9 +150,7 @@ const Modal = ({ setItemInfo, item, type }) => {
               <p className='tracking-wide'>
                 Release date:{" "}
                 <span className='font-bold'>
-                {handleDate(
-                      handleTypeDate(type)
-                    )}
+                  {handleDate(handleTypeDate(type))}
                 </span>
               </p>
               <div className='border-b-[2px] border-[#ffffff4e] rounded-2xl'></div>

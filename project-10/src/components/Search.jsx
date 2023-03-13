@@ -11,7 +11,7 @@ const Search = ({ setShowSearch, showSearch, setSearch }) => {
     if (event.keyCode === 13) {
       setSearch(value);
       setShowSearch(true);
-      console.log("clicked");
+     
     }
   };
 

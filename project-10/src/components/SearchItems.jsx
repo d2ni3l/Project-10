@@ -1,11 +1,12 @@
 import axios from "axios";
-import Row from "./Row";
+
 import React, { useState, useEffect } from "react";
 import { RxDotFilled } from "react-icons/rx";
 import { TbMovie } from "react-icons/tb";
 import Heading from "./Heading";
+import {ImArrowLeft2} from 'react-icons/im'
 const key = "a44069ccf4250949a19d7bae7fa72fce";
-const SearchItems = ({ search, setType, setItemInfo }) => {
+const SearchItems = ({ search, setType, setItemInfo, setShowSearch }) => {
   const [movieItems, setMovieItems] = useState([]);
   const [TVItems, setTVItems] = useState([]);
   
@@ -44,6 +45,8 @@ const SearchItems = ({ search, setType, setItemInfo }) => {
   return (
     <>
       <div className='pt-10'></div>
+
+      <div onClick={() => {setShowSearch(false)}}><button className=" rounded-md px-2 py-1 mx-7 mb-6 hover:scale-[.96] transition duration-300 flex items-center text-[#10141e] font-semibold bg-white"><span className="pl-1 pr-[.4rem] text-lg mt-[1.5px] "><ImArrowLeft2/></span> Go back</button></div>
       <Heading type='Movie' section='Results' />
       <div className='pt-5'></div>
       <div className='grid grid-cols-2 sm:grid-cols-4 gap-3 mx-5 '>
@@ -109,7 +112,7 @@ const SearchItems = ({ search, setType, setItemInfo }) => {
               onClick={() => {
                 setType(type);
                  setItemInfo(item)
-                console.log(item)
+                
               }}
               key={id}
               className='w-full h-full relative cursor-pointer hover-scale rounded-lg'>

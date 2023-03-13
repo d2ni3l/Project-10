@@ -8,6 +8,7 @@ const Account = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { user, signUp, logIn } = UserAuth();
+  const [error, setError] = useState('')
 
   const navigate = useNavigate();
 
@@ -16,7 +17,7 @@ const Account = () => {
     try {
       {
         await signUp(email, password);
-        navigate("/saved");
+        navigate("/");
       }
     } catch (err) {
       console.log(err);
@@ -24,14 +25,15 @@ const Account = () => {
   };
 
   const handleLogIn = async (e) => {
+    setError('');
     e.preventDefault();
     try {
       {
         await logIn(email, password);
-        navigate("/saved");
+        navigate("/");
       }
     } catch (err) {
-      console.log(err);
+      setError(err.message);
     }
   };
 
@@ -44,6 +46,7 @@ const Account = () => {
           setPassword={setPassword}
           handleLogIn={handleLogIn}
           setLogged={setLogged}
+          error={error}
         />
       ) : (
         <SignInForm
@@ -109,11 +112,12 @@ const SignInForm = ({ setEmail, setPassword, handleSignUp, setLogged }) => {
   );
 };
 
-const LogInForm = ({ setEmail, setPassword, setLogged, handleLogIn }) => {
+const LogInForm = ({ setEmail, setPassword, setLogged, handleLogIn, error }) => {
   return (
     <>
       <div className='grid items-center justify-center mx-auto h-auto max-w-md border border-[#7b75f5] py-12 rounded'>
         <h2 className='pb-6 font-bold text-3xl '>Log In</h2>
+        {error && <p className="">{error}</p> }
         <div className='pt-2'></div>
         <form
            onSubmit={handleLogIn}

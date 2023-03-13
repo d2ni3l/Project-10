@@ -72,8 +72,9 @@ const Main = () => {
   return (
     <>
      {itemInfo === '' ?  null : <Modal  setItemInfo={setItemInfo} item={itemInfo} type={type}/>}
+
       <Search setShowSearch={setShowSearch} showSearch={showSearch} setSearch={setSearch}/>
-      {showSearch ? <SearchItems search={search} setItemInfo={setItemInfo} setType={setType}/> : <>
+      {showSearch ? <SearchItems search={search} setItemInfo={setItemInfo} setType={setType} setShowSearch={setShowSearch}/> : <>
       <div className='pt-10'></div>
       <Trending setItemInfo={setItemInfo} setType={setType} trending={trending} section='Trending' type='Movie' />
       <div className='pt-10'></div>

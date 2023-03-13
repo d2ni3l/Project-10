@@ -10,20 +10,12 @@ import {UserAuth} from '../context/AuthContext'
 const Navbar = () => {
   const [changeColor, setChangeColor] = useState('/')
   const {user} = UserAuth();
-  console.log(user)
+ 
 
-  // const handleColor = () => {
-  //   if(changeColor === '/'){
-  //     setChangeColor('/')
-  //   }else if(changeColor === '/tvseries'){
-  //     setChangeColor('/tvseries')
-  //   }else if (changeColor === 'movies'){
-  //     setChangeColor('/movies')
-  //   }
-  //   }
+  
   return (
     <>
-      <div className='bg-[#171e31] py-6 flex justify-around items-center  text-[#5a6a90] text-2xl md:fixed md:flex-col md:h-[90vh] md:ml-3 md:mt-20 md:px-6 md:rounded-lg'>
+      <div className='bg-[#171e31] py-6 flex justify-around items-center  text-[#5a6a90] text-2xl md:fixed md:flex-col md:h-[90vh] md:ml-3 md:mt-10 md:px-6 md:rounded-lg'>
         <span className={`text-3xl text-[#7b75f5]  cursor-pointer `}>
           <Link to='/' >
           <BiCameraMovie/>
