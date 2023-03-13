@@ -141,30 +141,34 @@ const Modal = ({ setItemInfo, item, type }) => {
                 );
               })}
             </div>
-            <div className='flex flex-col text-sm bg-[#5a6a90] gap-1 justify-center px-3 py-7 rounded-lg'>
+            <div className='flex flex-col  text-sm bg-[#5a6a90] gap-1 justify-center px-3 py-7 rounded-lg'>
               <p className='tracking-wide'>
                 Media: <span className='font-bold'>{sliceType(type)}</span>
               </p>
               <div className='border-b-[2px] border-[#ffffff4e] rounded-2xl'></div>
 
-              <p className='tracking-wide'>
-                Release date:{" "}
+              
+              <p className='tracking-wide '>
+                Release date:
                 <span className='font-bold'>
                   {handleDate(handleTypeDate(type))}
                 </span>
               </p>
+              
+
               <div className='border-b-[2px] border-[#ffffff4e] rounded-2xl'></div>
 
-              <div className='flex'>
+              <div className='flex flex-col '>
                 <p className='tracking-wide'>Rating: </p>
-                &nbsp;
-                <div className='text-lg -mt-[0.28rem]'>
+                <div className='text-lg -mt-[0.28rem] '>
                   <Rater
+                  className='flex'
                     total={5}
                     rating={Math.round(item.vote_average) / 2}
                     interactive={false}></Rater>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
