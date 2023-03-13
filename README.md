@@ -2,7 +2,7 @@
 
 #### The movie app
 
-An application similar that allows you to view and save data of movie and TV series.
+An application that allows you to view and save data of movie and TV series.
 
 ## Made with React, TailwindCSS and Firebase 
 
